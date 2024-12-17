@@ -1,0 +1,9 @@
+<div class="container">
+    <h1>Edit Project</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="submit-btn">Update Project</button>
+        <a href="{% url 'main:view-projects' %}" class="submit-btn" style="background-color: #6c757d;">Cancel</a>
+    </form>
+</div>

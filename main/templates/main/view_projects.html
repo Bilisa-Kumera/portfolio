@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Projects | Admin Panel</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fc;
+            margin: 0;
+            padding: 0;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #2f3542;
+            color: #fff;
+            padding: 20px;
+            position: fixed;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 24px;
+        }
+
+        .sidebar a {
+            display: block;
+            color: #ddd;
+            padding: 10px 15px;
+            text-decoration: none;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .sidebar a:hover {
+            background-color: #3b4d70;
+            color: #fff;
+        }
+
+        .container {
+            margin-left: 260px;
+            padding: 20px;
+        }
+
+        .container h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .project-card {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 20px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .project-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .project-card .details {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card .details h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .project-card .details p {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .actions {
+            margin-top: 10px;
+        }
+
+        .actions a {
+            text-decoration: none;
+            color: #007bff;
+            font-size: 16px;
+            margin-right: 15px;
+        }
+
+        .actions a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="sidebar">
+        <h2>Admin Panel</h2>
+        <a href="{% url 'main:add_skill' %}">Add New Skill</a>
+        <a href="{% url 'main:add_project' %}">Add New Project</a>
+        <a href="{% url 'main:view-skills' %}">View Skills</a>
+        <a href="{% url 'main:view-projects' %}">View Projects</a>
+    </div>
+
+    <div class="container">
+        <h1>Projects</h1>
+        {% for project in projects %}
+            <div class="project-card">
+                <img src="{{ project.project_image.url }}" alt="{{ project.project_name }}">
+                <div class="details">
+                    <h2>{{ project.project_name }}</h2>
+                    <p>{{ project.project_description }}</p>
+                    <div class="actions">
+                        <a href="{% url 'main:edit_project' project.project_id %}">Edit</a> | 
+                        <a href="{% url 'main:delete_project' project.project_id %}">Delete</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+
+</html>

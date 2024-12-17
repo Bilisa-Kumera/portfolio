@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Skill</title>
+    {% comment %} <link rel="stylesheet" href="{% static 'css/admin.css' %}"> {% endcomment %}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style> 
+        /* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f8fa;
+    padding: 20px;
+}
+
+/* Container for the form */
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 28px;
+}
+
+/* Form Styling */
+.form-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-container p {
+    margin-bottom: 15px;
+    font-size: 16px;
+    color: #555;
+}
+
+input, select, textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+/* Submit Button */
+.submit-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #45a049;
+}
+
+/* Pop-up styling (handled by SweetAlert2) */
+.swal2-popup {
+    font-size: 18px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.swal2-title {
+    font-size: 22px;
+}
+
+.swal2-confirm {
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.swal2-confirm:hover {
+    background-color: #45a049;
+}
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Add New Skill</h1>
+        
+        <!-- Success or Failure pop-up -->
+        {% if messages %}
+            <script>
+                {% for message in messages %}
+                    Swal.fire({
+                        title: "{{ message.tags }}",
+                        text: "{{ message }}",
+                        icon: "{{ message.tags }}",
+                        confirmButtonText: 'Okay'
+                    });
+                {% endfor %}
+            </script>
+        {% endif %}
+        
+        <!-- Form -->
+        <form method="post" class="form-container">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="submit-btn">Add Skill</button>
+        </form>
+    </div>
+</body>
+
+</html>

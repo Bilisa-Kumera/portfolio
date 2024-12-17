@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Skills | Admin Panel</title>
+    {% comment %} <link rel="stylesheet" href="{% static 'css/admin.css' %}"> {% endcomment %}
+</head>
+
+<body>
+    <div class="sidebar">
+        <h2>Admin Panel</h2>
+        <a href="{% url 'main:add_skill' %}">Add New Skill</a>
+        <a href="{% url 'main:add_project' %}">Add New Project</a>
+        <a href="{% url 'main:view-skills' %}">View Skills</a>
+        <a href="{% url 'main:view-projects' %}">View Projects</a>
+    </div>
+
+    <div class="container">
+        <h1>Skills</h1>
+        <ul>
+            {% for skill in skills %}
+                <li>{{ skill.skill_name }} ({{ skill.skill_type }}) 
+                    <a href="{% url 'main:edit_skill' skill.skill_id %}">Edit</a> | 
+                    <a href="{% url 'main:delete_skill' skill.skill_id %}">Delete</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    
+</body>
+
+</html>

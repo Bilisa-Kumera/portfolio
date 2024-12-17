@@ -1,0 +1,153 @@
+<style>  
+    /* Container */
+    .container {
+        width: 80%;
+        max-width: 700px;
+        margin: 50px auto;
+        padding: 30px;
+        background-color: #f9f9f9;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Heading */
+    h1 {
+        text-align: center;
+        font-size: 28px;
+        color: #333;
+        margin-bottom: 30px;
+    }
+
+    /* Form */
+    .form-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        font-size: 16px;
+        font-weight: bold;
+        color: #333;
+    }
+
+    .form-group input, 
+    .form-group textarea {
+        width: 100%;
+        padding: 12px;
+        margin-top: 5px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 14px;
+        color: #333;
+        background-color: #fff;
+        transition: border 0.3s ease;
+    }
+
+    /* Styling Date Inputs */
+    .form-group input[type="date"] {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 14px;
+        color: #333;
+        background-color: #fff;
+    }
+
+    .form-group input[type="file"] {
+        padding: 5px;
+    }
+
+    /* On Focus Effect */
+    .form-group input:focus,
+    .form-group textarea:focus {
+        border-color: #007bff;
+        outline: none;
+    }
+
+    /* Submit Button */
+    .submit-btn {
+        background-color: #007bff;
+        color: white;
+        padding: 15px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .submit-btn:hover {
+        background-color: #0056b3;
+    }
+
+    /* Optional Styling for Pop-up */
+    .swal2-popup {
+        font-size: 16px;
+        padding: 20px;
+        border-radius: 5px;
+    }
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<body>
+    <div class="container">
+        <h1>Add New Project</h1>
+        
+        <!-- Success or Failure pop-up -->
+        {% if messages %}
+            <script>
+                {% for message in messages %}
+                    Swal.fire({
+                        title: "{{ message.tags }}",
+                        text: "{{ message }}",
+                        icon: "{{ message.tags }}",
+                        confirmButtonText: 'Okay'
+                    });
+                {% endfor %}
+            </script>
+        {% endif %}
+        
+        <!-- Form -->
+        <form method="post" enctype="multipart/form-data" class="form-container">
+            {% csrf_token %}
+            
+            <!-- Project Name -->
+            <div class="form-group">
+                <label for="id_project_name">Project Name:</label>
+                {{ form.project_name }}
+            </div>
+            
+            <!-- Project Description -->
+            <div class="form-group">
+                <label for="id_project_description">Project Description:</label>
+                {{ form.project_description }}
+            </div>
+
+            <!-- Project Image -->
+            <div class="form-group">
+                <label for="id_project_image">Project Image:</label>
+                {{ form.project_image }}
+            </div>
+
+            <!-- Project Start Date -->
+            <div class="form-group">
+                <label for="id_project_start_date">Project Start Date:</label>
+                {{ form.project_start_date }}
+            </div>
+
+            <!-- Project End Date -->
+            <div class="form-group">
+                <label for="id_project_end_date">Project End Date:</label>
+                {{ form.project_end_date }}
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="submit-btn">Add Project</button>
+        </form>
+    </div>
+</body>

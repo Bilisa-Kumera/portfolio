@@ -1,0 +1,20 @@
+<!-- view_skills_home.html -->
+<section id="skills">
+    <h2>Skills</h2>
+    <div class="skills-grid">
+        {% for skill_type, skills in skills_by_type.items %}
+            <div class="skill-type">
+                <h3>{{ skill_type }}</h3>
+                <div class="skills-list">
+                    {% for skill in skills %}
+                        <div class="card">
+                            <h4>{{ skill.skill_name }}</h4>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% empty %}
+            <p>No skills found.</p>
+        {% endfor %}
+    </div>
+</section>
