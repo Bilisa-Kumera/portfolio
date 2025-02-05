@@ -17,10 +17,8 @@ def home(request):
             skills_by_type[skill.skill_type] = []
         skills_by_type[skill.skill_type].append(skill)
 
-    # Debug print for skills by type
     print("Grouped Skills:", skills_by_type)  # Make sure it prints the expected structure
 
-    # Pass both projects and skills to the template
     return render(request, 'main/home.html', {'projects': projects, 'skills_by_type': skills_by_type})
 
 

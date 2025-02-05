@@ -2,322 +2,532 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bilisa Kumera Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bilisa Kumera Portfolio</title>
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
 
-    <!-- Font Awesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 
-    <!-- CSS -->
-    <style>
-        /* Reset some default styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <!-- CSS -->
+  <style>
+    /* CSS Variables for easy theming */
+    :root {
+      --primary-color: #4caf50;
+      --secondary-color: #3b9e6d;
+      --accent-color: #ff6347;
+      --dark-color: #333;
+      --light-color: #f4f4f4;
+      --transition-speed: 0.3s;
+    }
 
-        /* Body and basic styling */
-        body {
-            font-family: 'Inter', Arial, sans-serif;
-            line-height: 1.6;
-            background-color: #f4f4f4;
-            color: #333;
-            overflow-x: hidden;
-        }
+    /* Reset default styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        /* Smooth scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
+    /* Global Styles */
+    html {
+      scroll-behavior: smooth;
+    }
 
-        /* Navigation Styling */
-        nav {
-            position: sticky;
-            top: 0;
-            background-color: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(10px);
-            z-index: 100;
-            padding: 15px 20px;
-        }
+    body {
+      font-family: 'Inter', Arial, sans-serif;
+      line-height: 1.6;
+      background-color: var(--light-color);
+      color: var(--dark-color);
+      overflow-x: hidden;
+    }
 
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-        }
+    /* Navigation */
+    nav {
+      position: sticky;
+      top: 0;
+      background-color: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(10px);
+      z-index: 100;
+      padding: 15px 20px;
+      animation: slideDown var(--transition-speed) ease-out;
+    }
 
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.2rem;
-            transition: color 0.3s ease, transform 0.3s ease;
-        }
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+    }
 
-        nav a:hover {
-            color: #ff6347;
-            transform: scale(1.1);
-        }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.2rem;
+      transition: color var(--transition-speed) ease, transform var(--transition-speed) ease;
+    }
 
-        /* Intro Section */
-        .intro {
-            text-align: center;
-            padding: 100px 20px;
-            background: linear-gradient(45deg, #4caf50, #3b9e6d);
-            color: white;
-            border-bottom: 2px solid #fff;
-        }
+    nav a:hover {
+      color: var(--accent-color);
+      transform: scale(1.1);
+    }
 
-        .intro h1 {
-            font-size: 4rem;
-            margin-bottom: 20px;
-            font-weight: 700;
-            animation: fadeInDown 1s ease-out;
-        }
+    /* Intro Section */
+    .intro {
+      text-align: center;
+      padding: 120px 20px;
+      background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+      color: #fff;
+      border-bottom: 2px solid #fff;
+      animation: fadeInUp 1s ease-out;
+    }
 
-        .intro p {
-            font-size: 1.5rem;
-            max-width: 800px;
-            margin: 0 auto;
-        }
+    .intro h1 {
+      font-size: 4rem;
+      margin-bottom: 20px;
+      font-weight: 700;
+      animation: popIn 0.8s ease-out;
+    }
 
-        /* Skills Section */
-        #skills {
-            padding: 80px 20px;
-            background: #ffffff;
-            color: #333;
-        }
+    .intro p {
+      font-size: 1.5rem;
+      max-width: 800px;
+      margin: 0 auto;
+      animation: fadeInUp 1.2s ease-out;
+    }
 
-        #skills h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 30px;
-            font-weight: 700;
-        }
+    /* About Section */
+    #about {
+      padding: 80px 20px;
+      background: #fff;
+      color: var(--dark-color);
+      text-align: justify;
+      animation: fadeIn 1s ease-out;
+    }
 
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            justify-items: center;
-        }
+    #about h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
 
-        .card {
-            width: 100%;
-            background-color: #f4f4f4;
-            padding: 30px;
-            text-align: center;
-            border-radius: 8px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+    #about p {
+      font-size: 1.1rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
 
-        .card h4 {
-            font-size: 1.3rem;
-            color: #333;
-            margin-bottom: 15px;
-            font-weight: 600;
-        }
+    /* Skills Section */
+    #skills {
+      padding: 80px 20px;
+      background: #fff;
+      color: var(--dark-color);
+      animation: fadeIn 1s ease-out;
+    }
 
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-        }
+    #skills h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+      font-weight: 700;
+    }
 
-        .skill-type {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      justify-items: center;
+    }
 
-        /* Projects Section */
-        #projects {
-            padding: 80px 20px;
-            background: linear-gradient(135deg, #f0f0f0, #dfe7e9);
-            color: #333;
-        }
+    .card {
+      width: 100%;
+      background-color: var(--light-color);
+      padding: 30px;
+      text-align: center;
+      border-radius: 8px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+    }
 
-        #projects h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 30px;
-            font-weight: 700;
-        }
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    }
 
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-            justify-items: center;
-        }
+    .card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      font-weight: 600;
+      color: var(--primary-color);
+    }
 
-        .project-image {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            transition: transform 0.3s ease;
-        }
+    .skill-card h4 {
+      font-size: 1.2rem;
+      color: var(--dark-color);
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
 
-        .project-image:hover {
-            transform: scale(1.05);
-        }
+    /* Projects Section */
+    #projects {
+      padding: 80px 20px;
+      background: linear-gradient(135deg, #f0f0f0, #dfe7e9);
+      color: var(--dark-color);
+      animation: fadeIn 1s ease-out;
+    }
 
-        .project-btn {
-            display: inline-block;
-            padding: 12px 25px;
-            background-color: #4caf50;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            margin-top: 15px;
-            font-weight: 600;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-        }
+    #projects h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+      font-weight: 700;
+    }
 
-        .project-btn:hover {
-            background-color: #45a049;
-            transform: scale(1.1);
-        }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      justify-items: center;
+    }
 
-        /* Footer */
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 30px;
-            position: relative;
-            bottom: 0;
-            width: 100%;
-        }
+    .project-image {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      transition: transform var(--transition-speed) ease;
+    }
 
-        footer a {
-            color: #ff6347;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
+    .project-image:hover {
+      transform: scale(1.05);
+    }
 
-        footer a:hover {
-            color: #fff;
-        }
+    .project-btn {
+      display: inline-block;
+      padding: 12px 25px;
+      background-color: var(--primary-color);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      margin-top: 15px;
+      font-weight: 600;
+      transition: background-color var(--transition-speed) ease, transform var(--transition-speed) ease;
+    }
 
-        /* Animations */
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
+    .project-btn:hover {
+      background-color: #45a049;
+      transform: scale(1.1);
+    }
 
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+    /* Contact Section */
+    #contact {
+      padding: 80px 20px;
+      background: #fff;
+      color: var(--dark-color);
+      animation: fadeIn 1s ease-out;
+      text-align: center;
+    }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
+    #contact h2 {
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+      font-weight: 700;
+    }
 
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+    .contact-form {
+      max-width: 600px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
 
-        /* Media Queries for smaller screens */
-        @media (max-width: 768px) {
-            .intro h1 {
-                font-size: 2.5rem;
-            }
+    .contact-form input,
+    .contact-form textarea {
+      padding: 15px;
+      border: 2px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+      transition: border-color var(--transition-speed) ease;
+    }
 
-            .intro p {
-                font-size: 1.2rem;
-            }
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      outline: none;
+      border-color: var(--primary-color);
+    }
 
-            .skills-grid {
-                grid-template-columns: 1fr 1fr;
-            }
+    .contact-form button {
+      padding: 15px;
+      border: none;
+      border-radius: 5px;
+      background-color: var(--primary-color);
+      color: #fff;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background-color var(--transition-speed) ease, transform var(--transition-speed) ease;
+    }
 
-            .projects-grid {
-                grid-template-columns: 1fr 1fr;
-            }
+    .contact-form button:hover {
+      background-color: #45a049;
+      transform: scale(1.05);
+    }
 
-            .card {
-                max-width: 100%;
-            }
+    /* Footer */
+    footer {
+      background-color: var(--dark-color);
+      color: #fff;
+      text-align: center;
+      padding: 30px;
+      position: relative;
+      bottom: 0;
+      width: 100%;
+      animation: fadeIn 1s ease-out;
+    }
 
-            .project-btn {
-                font-size: 1rem;
-            }
-        }
-    </style>
+    footer a {
+      color: var(--accent-color);
+      text-decoration: none;
+      transition: color var(--transition-speed) ease;
+    }
+
+    footer a:hover {
+      color: #fff;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+    .contact-social {
+      margin-top: 20px;
+      font-size: 1.1rem;
+    }
+    
+    .contact-social a {
+      color: var(--primary-color, #4caf50);
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+    
+    .contact-social a:hover {
+      color: var(--accent-color, #ff6347);
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes popIn {
+      from {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideDown {
+      from {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    /* Media Queries */
+    @media (max-width: 768px) {
+      .intro h1 {
+        font-size: 2.5rem;
+      }
+
+      .intro p {
+        font-size: 1.2rem;
+      }
+
+      .skills-grid,
+      .projects-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .card {
+        max-width: 100%;
+      }
+
+      .project-btn {
+        font-size: 1rem;
+      }
+      /* About Section Styling */
+.about-section {
+    padding: 80px 20px;
+    background: #fff;
+    color: #333;
+    text-align: start;
+    animation: fadeIn 1s ease-out;
+  }
+  
+  .about-section h2 {
+    font-size: 2.8rem;
+    margin-bottom: 30px;
+    font-weight: 700;
+    position: relative;
+    display: inline-block;
+  }
+  
+  .about-section h2::after {
+    content: "";
+    position: absolute;
+    width: 50%;
+    height: 3px;
+    background: var(--primary-color, #4caf50);
+    left: 25%;
+    bottom: -10px;
+    border-radius: 2px;
+  }
+  
+  .about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    background: #f9f9f9;
+    padding: 30px;
+    border-left: 5px solid var(--primary-color, #4caf50);
+    border-radius: 5px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    text-align: left;
+  }
+  
+  .about-content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 20px;
+  }
+  
+  /* Fade-in Animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+    }
+  </style>
 </head>
 
 <body>
+  <nav>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About Me</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
 
-    <nav>
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About Me</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
+  <section id="home" class="intro">
+    <h1>Welcome to My Portfolio!</h1>
+    <p>I am <strong>Bilisa Kumera</strong>, a Senior Mobile Application Developer with expertise in Flutter, Android, and Golang. My passion lies in building innovative digital solutions that inspire and deliver results.</p>
+  </section>
 
-    <section id="home" class="intro">
-        <h1 class="animate__animated animate__fadeInDown">Welcome to My Portfolio!</h1>
-        <p>I am <strong>Bilisa Kumera</strong>, a Senior Mobile Application Developer with expertise in Flutter, Android, and Golang. My passion lies in building innovative digital solutions that inspire and deliver results.</p>
-    </section>
+  <section id="about" class="section about-section">
+<h2 style="text-align: center;">About Me</h2>
+    <div class="about-content">
+      <p>
+        I’m a Mobile App Developer with over 3 years of hands-on experience in designing, developing, and deploying innovative mobile applications. My journey in the mobile development world has enabled me to work on diverse projects—from concept to production—where I've learned the importance of creating seamless and intuitive user experiences.
+      </p> <br/>
+      <p>
+        I’m passionate about crafting engaging front-end interfaces that not only look great but also deliver high performance and reliability. In addition to my expertise in mobile app development, I have a strong background in building robust backends using Go. This skill set allows me to create scalable, efficient, and secure systems that power the applications I develop.
+      </p> 
+      <p>
+        Whether it’s integrating third-party APIs, managing data storage, or ensuring smooth server communication, I take pride in building solutions that meet both user and business needs. My technical proficiency is matched by a deep commitment to continuous learning and innovation.
+      </p> <br/>
+      <p>
+        I thrive in dynamic environments, enjoy tackling complex challenges, and believe that great software is built on the foundation of clean code, agile practices, and a user-first mindset. Whether working independently or as part of a collaborative team, I bring a strong problem-solving approach and a passion for turning ideas into reality.
+      </p>
+    </div>
+  </section>
+  
 
-    <section id="skills">
-        <h2>Skills</h2>
-        <div class="skills-grid">
-            {% for skill_type, skills in skills_by_type.items %}
-                <div class="card">
-                    <h3>{{ skill_type }}</h3>
-                    <div class="skills-list">
-                        {% for skill in skills %}
-                            <div class="skill-card">
-                                <h4>{{ skill.skill_name }}</h4>
-                            </div>
-                        {% endfor %}
-                    </div>
-                </div>
-            {% empty %}
-                <p>No skills found.</p>
-            {% endfor %}
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="skills-grid">
+      {% for skill_type, skills in skills_by_type.items %}
+      <div class="card">
+        <h3>{{ skill_type }}</h3>
+        <div class="skills-list">
+          {% for skill in skills %}
+          <div class="skill-card">
+            <h4>{{ skill.skill_name }}</h4>
+          </div>
+          {% endfor %}
         </div>
-    </section>
+      </div>
+      {% empty %}
+      <p>No skills found.</p>
+      {% endfor %}
+    </div>
+  </section>
 
-    <section id="projects">
-        <h2>Projects</h2>
-        <div class="projects-grid">
-            {% for project in projects %}
-                <div class="card">
-                    <img src="{{ project.project_image.url }}" alt="{{ project.project_name }}" class="project-image">
-                    <h3>{{ project.project_name }}</h3>
-                    <p>{{ project.project_description }}</p>
-                    <a href="{% url 'main:edit_project' project.project_id %}" class="project-btn">View Details</a>
-                </div>
-            {% empty %}
-                <p>No projects found.</p>
-            {% endfor %}
-        </div>
-    </section>
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="projects-grid">
+      {% for project in projects %}
+      <div class="card">
+        <img src="{{ project.project_image.url }}" alt="{{ project.project_name }}" class="project-image" />
+        <h3>{{ project.project_name }}</h3>
+        <p>{{ project.project_description }}</p>
+        <a href="{% url 'main:edit_project' project.project_id %}" class="project-btn">View Details</a>
+      </div>
+      {% empty %}
+      <p>No projects found.</p>
+      {% endfor %}
+    </div>
+  </section>
 
-    <footer>
-        <p>&copy; 2024 Bilisa Kumera. All rights reserved.</p>
-    </footer>
+  <section id="contact" class="section">
+    <h2>Contact Me</h2>
+    <form class="contact-form" action="mailto:bilisakumera@gmail.com" method="post" enctype="text/plain">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+    <p class="contact-social">
+      Or connect with me on 
+      <a href="https://www.linkedin.com/in/bilisa-kumera" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    </p>
+  </section>
+  
 
+  <footer>
+    <p>&copy; 2024 Bilisa Kumera. All rights reserved.</p>
+  </footer>
 </body>
 
 </html>
